@@ -13,7 +13,7 @@ warnings.filterwarnings('ignore')
 
 import os
 
-data = pd.read_csv("D:/Projet Perso/Ali/Data Scientist/Projet 4/data/building-energy-cleaned.csv")
+data = pd.read_csv("/data/building-energy-cleaned.csv")
 print(data.head())
 
 print(data.info())
