@@ -2,7 +2,7 @@
 #
 # Project : Customer Segmentation
 # Project 5
-# http://localhost:8888/notebooks/CustomerSegmentation.ipynb
+# 
 # *******************************************
 
 
