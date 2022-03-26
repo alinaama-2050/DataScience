@@ -208,6 +208,33 @@ pd.DataFrame(
 )
 
 
+# 3 D Printing
+
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+clusts = KMeans(n_clusters=4).fit_predict(normalized_df[['TotalSales', 'OrderCount', 'AvgOrderValue']])
+#Plot the clusters obtained using k means
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+scatter = ax.scatter(
+            kmeans.cluster_centers_[:, 1],
+            kmeans.cluster_centers_[:, 0],
+            kmeans.cluster_centers_[:, 2],
+            s = 250,
+            marker='o',
+            c='red',
+            label='centroids')
+scatter = ax.scatter(four_cluster_df['TotalSales'],four_cluster_df['OrderCount'], four_cluster_df['AvgOrderValue'],
+                     c=clusts, s=20, cmap='winter')
+
+
+ax.set_title('K-Means Clustering')
+ax.set_xlabel('TotalSales')
+ax.set_ylabel('OrderCount')
+ax.set_zlabel('AvgOrderValue')
+ax.legend()
+plt.show()
+
 
 # Optimize Number of clusters for k-means clustering
 
