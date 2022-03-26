@@ -206,3 +206,48 @@ pd.DataFrame(
         'SBQQ__ProductName__c'
     ].sort_values(ascending=False).head()
 )
+
+
+
+# Optimize Number of clusters for k-means clustering
+
+from sklearn.preprocessing import MinMaxScaler
+mms = MinMaxScaler()
+data = normalized_df[['TotalSales', 'OrderCount', 'AvgOrderValue']]
+mms.fit(data)
+data_transformed = mms.transform(data)
+
+
+Sum_of_squared_distances = []
+K = range(1,14)
+for k in K:
+    km = KMeans(n_clusters=k)
+    km = km.fit(data_transformed)
+    Sum_of_squared_distances.append(km.inertia_)
+
+plt.plot(K, Sum_of_squared_distances, 'bx-')
+plt.xlabel('k')
+plt.ylabel('Sum_of_squared_distances')
+plt.title('Elbow Method For Optimal k')
+plt.show()
+
+
+# SIlhouette Vizualizer
+from yellowbrick.cluster import SilhouetteVisualizer
+
+fig, ax = plt.subplots(2, 2, figsize=(15,8))
+for i in [2, 3, 4, 5]:
+    '''
+    Create KMeans instance for different number of clusters
+    '''
+    km = KMeans(n_clusters=i, n_init=10, max_iter=100, random_state=42)
+    q, mod = divmod(i, 2)
+    '''
+    Create SilhouetteVisualizer instance with KMeans instance
+    Fit the visualizer
+    '''
+    visualizer = SilhouetteVisualizer(km, colors='yellowbrick', ax=ax[q-1][mod])
+    visualizer.fit(data)
+
+
+plt.show()
