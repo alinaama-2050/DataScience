@@ -18,7 +18,7 @@ def ValuePredictor(to_predict_list, seg):
     #to_predict = np.array(to_predict_list).reshape(1, 12)
     print(to_predict_list)
     loaded_model = pickle.load(open("model_lead_dt.pkl", "rb"))
-    # La segmentation Divers influs sur la conversion
+    # La segmentation Divers influe sur la conversion
     if seg == "7":
         result = loaded_model.predict([[1,1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0]])
     else:
