@@ -519,14 +519,6 @@ plt.show()
 
 
 # Observations from above categorical features
-# Since there is very less variation in data values in the below features, so we can drop these features
-# DndCall
-# Search
-# PaperArticle
-# EducationForum
-# Newspaper
-# DigitalAd
-# Recommendation
 
 print('number of columns before dropping column "Country" are: {0}'.format(df.shape[1]))
 df.drop(columns=['DndCall','Search','PaperArticle','Forums','Newspaper','DigitalAd','Recommendation'],inplace=True)
@@ -545,11 +537,6 @@ crosstab_df
 plot_frequency_and_percentage('FreeCopy White Book',crosstab_df,df.sort_values(by='FreeCopy White Book',ascending=False),False,6)
 plt.show()
 
-# Observations from above plot
-#
-#     Maximum number of leads and also the lead conversion rate is highest for the
-#     lead who do not opt for free copy of mastering the interview
-
 
 # Data Preparation for modeling
 
@@ -562,9 +549,6 @@ df.drop(columns = ['ProspectId','LeadNumber', 'CreatedDate'],inplace=True)
 print('No. of columns after dropping 2 columns: {0}'.format(df.shape[1]))
 
 print(df.head())
-
-
-
 
 
 # First make subset of dataframes based on datatype - object and numerical
